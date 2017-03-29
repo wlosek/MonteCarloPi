@@ -12,6 +12,13 @@ DrawArea::DrawArea(QWidget *parent)
     setFixedSize(300, 300);
 }
 
+void DrawArea::SetPoints(const PointsVector& inside,
+                          const PointsVector& outside)
+{
+    m_Inside = inside;
+    m_Outside = outside;
+}
+
 void DrawArea::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
@@ -25,5 +32,24 @@ void DrawArea::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setPen(pen);
     painter.drawEllipse(center, 150,150);
+
+    for(int i = 0; i < m_Inside.size(); ++i)
+    {
+        const std::pair<double, double> point = m_Inside.at(i);
+        pen.setColor(Qt::green);
+        pen.setWidth(1);
+        painter.setPen(pen);
+        painter.drawPoint(point.first * 150 + 150, point.second * 150 + 150);
+    }
+
+    for(int i = 0; i < m_Outside.size(); ++i)
+    {
+        const std::pair<double, double> point = m_Outside.at(i);
+        pen.setColor(Qt::red);
+        pen.setWidth(1);
+        painter.setPen(pen);
+        painter.drawPoint(point.first * 150 + 150, point.second * 150 + 150);
+    }
+
     painter.end();
 }

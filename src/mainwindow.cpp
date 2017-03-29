@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include <QVBoxLayout>
+#include "montecarloalgorithm.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_NumberOfPointsWidget(nullptr)
 {
     InitLayout();
+    ConnectActions();
 }
 
 MainWindow::~MainWindow()
@@ -25,4 +27,16 @@ void MainWindow::InitLayout()
 
     centralWdg->setLayout(layout);
     setCentralWidget(centralWdg);
+}
+
+void MainWindow::ConnectActions()
+{
+    connect(m_NumberOfPointsWidget, SIGNAL(Run(int)), this, SLOT(CalculatePi(int)));
+}
+
+void MainWindow::CalculatePi(int numberOfPoints)
+{
+    MonteCarloAlgorithm monteCarlo(numberOfPoints);
+    m_DrawArea->SetPoints(monteCarlo.GetInsidePoints(), monteCarlo.GetOutsidePoints());
+    m_DrawArea->update();
 }

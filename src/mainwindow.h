@@ -18,6 +18,10 @@ private:
     DrawArea*               m_DrawArea;
 
     void                    InitLayout();
+    void                    ConnectActions();
+
+private slots:
+    void                    CalculatePi(int numberOfPoints);
 };
 
 #endif // MAINWINDOW_H

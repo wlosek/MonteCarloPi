@@ -4,6 +4,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QIcon>
+#include <QString>
 
 NumberOfPointsWidget::NumberOfPointsWidget(QWidget *parent)
     : QWidget(parent),
@@ -11,6 +12,7 @@ NumberOfPointsWidget::NumberOfPointsWidget(QWidget *parent)
       m_RunApp(nullptr)
 {
     InitLayout();
+    ConnectActions();
 }
 
 void NumberOfPointsWidget::InitLayout()
@@ -30,7 +32,14 @@ void NumberOfPointsWidget::InitLayout()
     setLayout(layout);
 }
 
-QPushButton* NumberOfPointsWidget::GetPushButton() const
+void NumberOfPointsWidget::ConnectActions()
 {
-    return m_RunApp;
+    connect(m_RunApp, SIGNAL(clicked()), this, SLOT(ClickedRun()));
+}
+
+void NumberOfPointsWidget::ClickedRun()
+{
+    QString numberOfPointsTxt = m_NumberOfPoints->text().isEmpty() ?
+                                "0" : m_NumberOfPoints->text();
+    emit Run(numberOfPointsTxt.toInt());
 }

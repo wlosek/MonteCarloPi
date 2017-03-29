@@ -13,13 +13,19 @@ class NumberOfPointsWidget : public QWidget
 public:
     explicit NumberOfPointsWidget(QWidget *parent = 0);
 
-    QPushButton*    GetPushButton() const;
+    int             GetNumberOfPoints() const;
+
+public slots:
+    void            ClickedRun();
+signals:
+    void            Run(int numberOfPoints);
 
 private:
     QLineEdit*      m_NumberOfPoints;
     QPushButton*    m_RunApp;
 
     void            InitLayout();
+    void            ConnectActions();
 };
 
 #endif // NUMBEROFPOINTSWIDGET_H

@@ -12,11 +12,12 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 # Input
 HEADERS += src/drawarea.h \
            src/mainwindow.h \
-           src/montecarloalgoritm.h \
-           src/numberofpointswidget.h
+           src/numberofpointswidget.h \
+           src/montecarloalgorithm.h
 SOURCES += src/drawarea.cpp \
            src/main.cpp \
            src/mainwindow.cpp \
-           src/montecarloalgoritm.cpp \
-           src/numberofpointswidget.cpp
-RESOURCES += src/rsc.qrc
+           src/numberofpointswidget.cpp \
+           src/montecarloalgorithm.cpp
+RESOURCES += \
+    rsc.qrc
