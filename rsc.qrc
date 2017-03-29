@@ -1,1 +1,5 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/">
+        <file alias="PlayButton">rsc/play-button.png</file>
+    </qresource>
+</RCC>

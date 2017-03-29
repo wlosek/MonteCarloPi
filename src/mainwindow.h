@@ -2,10 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-namespace Ui {
-class MainWindow;
-}
+#include <numberofpointswidget.h>
 
 class MainWindow : public QMainWindow
 {
@@ -16,7 +13,9 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+    NumberOfPointsWidget* m_NumberOfPointsWidget;
+
+    void InitLayout();
 };
 
 #endif // MAINWINDOW_H
