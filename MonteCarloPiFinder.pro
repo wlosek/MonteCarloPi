@@ -19,4 +19,4 @@ SOURCES += src/drawarea.cpp \
            src/mainwindow.cpp \
            src/montecarloalgoritm.cpp \
            src/numberofpointswidget.cpp
-RESOURCES += rsc.qrc
+RESOURCES += src/rsc.qrc
