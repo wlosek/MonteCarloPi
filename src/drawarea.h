@@ -9,9 +9,8 @@ class DrawArea : public QWidget
 public:
     explicit DrawArea(QWidget *parent = 0);
 
-signals:
-
-public slots:
+protected:
+    void paintEvent(QPaintEvent *event) override;
 };
 
 #endif // DRAWAREA_H

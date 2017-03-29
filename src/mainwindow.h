@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <numberofpointswidget.h>
+#include "numberofpointswidget.h"
+#include "drawarea.h"
 
 class MainWindow : public QMainWindow
 {
@@ -13,9 +14,10 @@ public:
     ~MainWindow();
 
 private:
-    NumberOfPointsWidget* m_NumberOfPointsWidget;
+    NumberOfPointsWidget*   m_NumberOfPointsWidget;
+    DrawArea*               m_DrawArea;
 
-    void InitLayout();
+    void                    InitLayout();
 };
 
 #endif // MAINWINDOW_H
