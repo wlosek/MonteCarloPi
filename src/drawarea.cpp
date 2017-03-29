@@ -33,11 +33,12 @@ void DrawArea::paintEvent(QPaintEvent *event)
     painter.setPen(pen);
     painter.drawEllipse(center, 150,150);
 
+    pen.setWidth(1);
+
     for(int i = 0; i < m_Inside.size(); ++i)
     {
         const std::pair<double, double> point = m_Inside.at(i);
         pen.setColor(Qt::green);
-        pen.setWidth(1);
         painter.setPen(pen);
         painter.drawPoint(point.first * 150 + 150, point.second * 150 + 150);
     }
@@ -46,7 +47,6 @@ void DrawArea::paintEvent(QPaintEvent *event)
     {
         const std::pair<double, double> point = m_Outside.at(i);
         pen.setColor(Qt::red);
-        pen.setWidth(1);
         painter.setPen(pen);
         painter.drawPoint(point.first * 150 + 150, point.second * 150 + 150);
     }
