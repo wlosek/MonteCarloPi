@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "numberofpointswidget.h"
 #include "drawarea.h"
+#include "pivaluewidget.h"
 
 class MainWindow : public QMainWindow
 {
@@ -16,6 +17,7 @@ public:
 private:
     NumberOfPointsWidget*   m_NumberOfPointsWidget;
     DrawArea*               m_DrawArea;
+    PiValueWidget*          m_PiValueWdg;
 
     void                    InitLayout();
     void                    ConnectActions();

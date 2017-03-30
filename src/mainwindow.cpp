@@ -4,7 +4,9 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    m_NumberOfPointsWidget(nullptr)
+    m_NumberOfPointsWidget(nullptr),
+    m_DrawArea(nullptr),
+    m_PiValueWdg(nullptr)
 {
     InitLayout();
     ConnectActions();
@@ -20,9 +22,11 @@ void MainWindow::InitLayout()
 
     m_NumberOfPointsWidget = new NumberOfPointsWidget;
     m_DrawArea = new DrawArea;
+    m_PiValueWdg = new PiValueWidget;
 
     QVBoxLayout* layout = new QVBoxLayout;
     layout->addWidget(m_NumberOfPointsWidget);
+    layout->addWidget(m_PiValueWdg);
     layout->addWidget(m_DrawArea);
 
     centralWdg->setLayout(layout);
@@ -37,6 +41,7 @@ void MainWindow::ConnectActions()
 void MainWindow::CalculatePi(int numberOfPoints)
 {
     MonteCarloAlgorithm monteCarlo(numberOfPoints);
+    m_PiValueWdg->SetPiValue(monteCarlo.GetPiResult());
     m_DrawArea->SetPoints(monteCarlo.GetInsidePoints(), monteCarlo.GetOutsidePoints());
     m_DrawArea->update();
 }
