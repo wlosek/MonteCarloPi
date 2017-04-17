@@ -3,6 +3,18 @@
 #include <QPainter>
 #include <QPoint>
 
+void DrawPoints(const PointsVector& points,
+                Qt::GlobalColor color,
+                QPainter& painter)
+{
+    painter.setPen(color);
+    for(int i = 0; i < points.size(); ++i)
+    {
+        const std::pair<double, double> point = points.at(i);
+        painter.drawPoint(point.first * 150 + 150, point.second * 150 + 150);
+    }
+}
+
 DrawArea::DrawArea(QWidget *parent)
     : QWidget(parent)
 {
@@ -35,21 +47,8 @@ void DrawArea::paintEvent(QPaintEvent *event)
 
     pen.setWidth(1);
 
-    for(int i = 0; i < m_Inside.size(); ++i)
-    {
-        const std::pair<double, double> point = m_Inside.at(i);
-        pen.setColor(Qt::green);
-        painter.setPen(pen);
-        painter.drawPoint(point.first * 150 + 150, point.second * 150 + 150);
-    }
-
-    for(int i = 0; i < m_Outside.size(); ++i)
-    {
-        const std::pair<double, double> point = m_Outside.at(i);
-        pen.setColor(Qt::red);
-        painter.setPen(pen);
-        painter.drawPoint(point.first * 150 + 150, point.second * 150 + 150);
-    }
+    DrawPoints(m_Inside, Qt::green, painter);
+    DrawPoints(m_Outside, Qt::red, painter);
 
     painter.end();
 }
